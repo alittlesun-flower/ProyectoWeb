@@ -20,3 +20,18 @@ use App\Http\Controllers\ResidenteController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+//ADMINISTRADOR
+Route::get("administrador/get",[AdministradorController::class, "getAdministradores"]);
+Route::post("administrador/post",[AdministradorController::class, "crearAdministrador"]);
+
+//CONDOMINIO
+Route::get("condominio/get",[CondominioController::class, "getCondominios"]);
+Route::post("condominio/post",[CondominioController::class, "crearCondominio"]);
+
+//EDIFICIO
+Route::get("edificio/get",[EdificioController::class, "getEdificios"]);
+Route::post("edificio/post",[EdificioController::class, "crearEdificio"]);
+
+//RESIDENTE
+Route::get("residente/get",[ResidenteController::class, "getResidentes"]);
+Route::post("residente/post",[ResidenteController::class, "crearResidente"]);

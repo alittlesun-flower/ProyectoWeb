@@ -33,5 +33,6 @@
 @endsection
 
 @section('javascript')
-    
+    <script src="{{asset('js/agregarAdministrador.js')}}"></script>
+    <script src="{{asset('js/servicios/administradoresService.js')}}"></script>
 @endsection
