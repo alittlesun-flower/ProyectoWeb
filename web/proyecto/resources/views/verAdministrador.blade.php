@@ -21,5 +21,6 @@
 @endsection
 
 @section('javascript')
-    
+    <script src="{{asset('js/servicios/administradoresService.js')}}"></script>
+    <script src="{{asset('js/verAdministrador.js')}}"></script>    
 @endsection

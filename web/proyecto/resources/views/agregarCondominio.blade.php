@@ -34,5 +34,6 @@
 @endsection
 
 @section('javascript')
-    
+    <script src="{{asset('js/agregarCondominio.js')}}"></script>
+    <script src="{{asset('js/servicios/condominiosService.js')}}"></script>    
 @endsection

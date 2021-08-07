@@ -1,3 +1,24 @@
+/*
+const iniciarEliminacion = async function(){
+    //1.obtener id a eliminar
+    let id = this.idAdministrador;
+    let resp = await Swal.fire({title:"¿Esta seguro?", text:"Esta operacion es irreversible",
+    icon:"error", showCancelButton:true});
+    if(resp.isConfirmed){
+        //1. eliminar
+        if(await eliminarAdministrador(id)){
+            //2. si la eliminacion fue exitosa, recargar tabla
+            let administrador = await getAdministradores();
+            cargarTabla(administrador);
+            Swal.fire("Consola eliminada", "Consola eliminada exitosamente", "info");
+        }
+    }else{
+        //3. si la eliminacion no se hace mostrar mensaje
+        Swal.fire("Cancelado", "Cancelado a peticion del usuario","info");
+    }
+};
+*/
+
 const cargarTabla = (administrador)=>{
     //1. obtener una referencia al cuerpo de la tabla
     let tbody = document.querySelector("#tbody-administrador");
@@ -16,12 +37,12 @@ const cargarTabla = (administrador)=>{
         let tdTelefono = document.createElement("td");
         tdTelefono.innerText = administrador[i].email;
         let tdAcciones = document.createElement("td");
-        let botonEliminar = document.createElement("button");
+        /*let botonEliminar = document.createElement("button");
         botonEliminar.innerText = "Eliminar";
         botonEliminar.classList.add("btn", "btn-danger");
-        botonEliminar.idConsola = consolas[i].id;
+        botonEliminar.idAdministrador = administrador[i].id;
         botonEliminar.addEventListener("click", iniciarEliminacion);
-        tdAcciones.appendChild(botonEliminar);
+        tdAcciones.appendChild(botonEliminar);*/
         //5. agregar los td al tr
         tr.appendChild(tdRut);
         tr.appendChild(tdNombre);
@@ -32,3 +53,8 @@ const cargarTabla = (administrador)=>{
         tbody.appendChild(tr);
     }
 };
+
+document.addEventListener("DOMContentLoaded", async ()=>{
+    let administrador = await getAdministradores();
+    cargarTabla(administrador);
+});

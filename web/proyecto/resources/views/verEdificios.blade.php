@@ -21,5 +21,6 @@
 @endsection
 
 @section('javascript')
-    
+    <script src="{{asset('js/servicios/edificiosService.js')}}"></script>
+    <script src="{{asset('js/verEdificio.js')}}"></script>
 @endsection

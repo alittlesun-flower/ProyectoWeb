@@ -20,8 +20,8 @@
                     <input type="number" id="cantidadDepartamentos-txt" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="letra-text" class="form-label">Letra del edificio</label>
-                    <input type="text" id="letra-text" class="form-control">
+                    <label for="letra-txt" class="form-label">Letra del edificio</label>
+                    <input type="text" id="letra-txt" class="form-control">
                 </div>
             </div>
             <div class="card-footer d-grid gap-1">
@@ -33,5 +33,6 @@
 @endsection
 
 @section('javascript')
-    
+    <script src="{{asset('js/agregarEdificio.js')}}"></script>
+    <script src="{{asset('js/servicios/edificiosService.js')}}"></script>      
 @endsection
