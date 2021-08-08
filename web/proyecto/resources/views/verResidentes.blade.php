@@ -11,7 +11,8 @@
                     <td>Email</td>
                     <td>Teléfono de contacto</td>
                     <td>¿Posee estacionamiento?</td>
-                    <td>Acciones</td>
+                    <td>Accion 1</td>
+                    <td>Accion 2</td>
                 </tr>
             </thead>
             <tbody id="tbody-residente">

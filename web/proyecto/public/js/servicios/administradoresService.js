@@ -10,3 +10,16 @@ crearAdministrador = async(administrador)=>{
     });
     return resp.data;
 }
+const eliminarAdministrador = async(id)=>{
+    try{
+        let resp = await axios.post("api/administrador/delete", {id}, {
+            headers:{
+                "Content-Type": "aplication/json"
+            }
+        });
+        return resp.data == "ok";
+    }catch(e){
+        return false;
+    }
+
+}

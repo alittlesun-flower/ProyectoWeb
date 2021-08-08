@@ -9,7 +9,8 @@
                     <td>Nombre</td>
                     <td>Email</td>
                     <td>Télefono de contacto</td>
-                    <td>Acciones</td>
+                    <td>Accion 1</td>
+                    <td>Accion 2</td>
                 </tr>
             </thead>
             <tbody id="tbody-administrador">

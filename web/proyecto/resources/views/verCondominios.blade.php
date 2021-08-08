@@ -9,7 +9,8 @@
                     <td>Dirección</td>
                     <td>Nombre de la comuna</td>
                     <td>Cantidad de edificios</td>
-                    <td>Acciones</td>
+                    <td>Accion 1</td>
+                    <td>Accion 2</td>
                 </tr>
             </thead>
             <tbody id="tbody-condominio">

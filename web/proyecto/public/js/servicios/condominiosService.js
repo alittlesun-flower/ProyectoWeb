@@ -10,3 +10,16 @@ crearCondominio = async(condominio)=>{
     });
     return resp.data;
 }
+const eliminarCondominio = async(id)=>{
+    try{
+        let resp = await axios.post("api/condominio/delete", {id}, {
+            headers:{
+                "Content-Type": "aplication/json"
+            }
+        });
+        return resp.data == "ok";
+    }catch(e){
+        return false;
+    }
+
+}

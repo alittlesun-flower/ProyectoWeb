@@ -10,3 +10,16 @@ crearResidente = async(residente)=>{
     });
     return resp.data;
 }
+const eliminarResidente = async(id)=>{
+    try{
+        let resp = await axios.post("api/residente/delete", {id}, {
+            headers:{
+                "Content-Type": "aplication/json"
+            }
+        });
+        return resp.data == "ok";
+    }catch(e){
+        return false;
+    }
+
+}

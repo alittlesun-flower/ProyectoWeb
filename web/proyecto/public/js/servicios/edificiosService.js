@@ -10,3 +10,16 @@ crearEdificio = async(edificio)=>{
     });
     return resp.data;
 }
+const eliminarEdificio = async(id)=>{
+    try{
+        let resp = await axios.post("api/edificio/delete", {id}, {
+            headers:{
+                "Content-Type": "aplication/json"
+            }
+        });
+        return resp.data == "ok";
+    }catch(e){
+        return false;
+    }
+
+}

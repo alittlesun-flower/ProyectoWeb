@@ -21,5 +21,12 @@ class ResidenteController extends Controller
         $residente->estacionamiento=$input["estacionamiento"];
         $residente->save();
         return $residente;
-    }     
+    }
+    public function eliminarResidente(Request $request){
+        $input = $request->all();
+        $id = $input["id"]; 
+        $residente = Residente::findOrFail($id);
+        $residente->delete(); 
+        return "ok";
+    }          
 }

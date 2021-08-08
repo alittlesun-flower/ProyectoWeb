@@ -9,7 +9,8 @@
                     <td>Cantidad de pisos</td>
                     <td>Cantidad de departamentos</td>
                     <td>Letra del edificio</td>
-                    <td>Acciones</td>
+                    <td>Accion 1</td>
+                    <td>Accion 2</td>
                 </tr>
             </thead>
             <tbody id="tbody-edificio">

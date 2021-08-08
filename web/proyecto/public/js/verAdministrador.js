@@ -1,23 +1,19 @@
-/*
+
 const iniciarEliminacion = async function(){
-    //1.obtener id a eliminar
     let id = this.idAdministrador;
     let resp = await Swal.fire({title:"¿Esta seguro?", text:"Esta operacion es irreversible",
     icon:"error", showCancelButton:true});
     if(resp.isConfirmed){
-        //1. eliminar
         if(await eliminarAdministrador(id)){
-            //2. si la eliminacion fue exitosa, recargar tabla
             let administrador = await getAdministradores();
             cargarTabla(administrador);
-            Swal.fire("Consola eliminada", "Consola eliminada exitosamente", "info");
+            Swal.fire("Administrador eliminado", "Administrador eliminado exitosamente", "info");
         }
     }else{
-        //3. si la eliminacion no se hace mostrar mensaje
         Swal.fire("Cancelado", "Cancelado a peticion del usuario","info");
     }
 };
-*/
+
 
 const cargarTabla = (administrador)=>{
     //1. obtener una referencia al cuerpo de la tabla
@@ -36,19 +32,28 @@ const cargarTabla = (administrador)=>{
         tdEmail.innerText = administrador[i].email;
         let tdTelefono = document.createElement("td");
         tdTelefono.innerText = administrador[i].email;
-        let tdAcciones = document.createElement("td");
-        /*let botonEliminar = document.createElement("button");
+        let tdAccion1 = document.createElement("td");
+        //ELIMINAR
+        let botonEliminar = document.createElement("button");
         botonEliminar.innerText = "Eliminar";
         botonEliminar.classList.add("btn", "btn-danger");
         botonEliminar.idAdministrador = administrador[i].id;
         botonEliminar.addEventListener("click", iniciarEliminacion);
-        tdAcciones.appendChild(botonEliminar);*/
+        tdAccion1.appendChild(botonEliminar);
+        //ACTUALIZAR
+        let tdAccion2 = document.createElement("td");
+        let botonActualizar = document.createElement("button");
+        botonActualizar.innerText = "Actualizar";
+        botonActualizar.classList.add("btn","btn-warning");
+        tdAccion2.appendChild(botonActualizar);
+
         //5. agregar los td al tr
         tr.appendChild(tdRut);
         tr.appendChild(tdNombre);
         tr.appendChild(tdEmail);
         tr.appendChild(tdTelefono);
-        tr.appendChild(tdAcciones);
+        tr.appendChild(tdAccion1);
+        tr.appendChild(tdAccion2);
         //6. agregar el tr al cuerpo de la tabla
         tbody.appendChild(tr);
     }
