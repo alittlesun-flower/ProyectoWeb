@@ -14,7 +14,38 @@ const iniciarEliminacion = async function(){
     }
 };
 
+const actualizar = async function(){
+    let idAdministrador = this.idAdministrador;
+    let administrador = await obtenerPorId(idAdministrador);
+    let molde = this.parentNode.parentNode;
+    administrador.rut = molde.querySelector(".rut-txt").value;
+    administrador.nombre = molde.querySelector(".nombre-txt").value;
+    administrador.email = molde.querySelector(".adm-email").value;
+    administrador.telefono = molde.querySelector(".adm-num").value;
+    await actualizarAdministrador(administrador);
+    await Swal.close();
+    let administradores = await getAdministradores();
+    cargarTabla(administradores);
+};
 
+const iniciarActualizacion = async function(){
+    let idAdministrador = this.idAdministrador;
+    let administrador = await obtenerPorId(idAdministrador);
+  
+    let molde = document.querySelector(".molde-actualizar").cloneNode(true);
+    molde.querySelector(".rut-txt").value = administrador.rut;
+    molde.querySelector(".nombre-txt").value = administrador.nombre;
+    molde.querySelector(".adm-email").value = administrador.email;
+    molde.querySelector(".adm-num").value = administrador.telefono;
+    molde.querySelector(".actualizar-btn").idAdministrador = idAdministrador;
+    molde.querySelector(".actualizar-btn").addEventListener("click", actualizar);
+    await Swal.fire({
+        title:"Actualizar",
+        html: molde,
+        confirmButtonText: "Cerrar"
+    });
+  
+};
 const cargarTabla = (administrador)=>{
     //1. obtener una referencia al cuerpo de la tabla
     let tbody = document.querySelector("#tbody-administrador");
@@ -45,6 +76,8 @@ const cargarTabla = (administrador)=>{
         let botonActualizar = document.createElement("button");
         botonActualizar.innerText = "Actualizar";
         botonActualizar.classList.add("btn","btn-warning");
+        botonActualizar.idAdministrador = administrador[i].id;
+        botonActualizar.addEventListener("click", iniciarActualizacion);
         tdAccion2.appendChild(botonActualizar);
 
         //5. agregar los td al tr

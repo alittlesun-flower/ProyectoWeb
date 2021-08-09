@@ -39,7 +39,7 @@
                 </div>  
             </div>
             <div class="card-footer d-grid gap-1">
-                <button id="regresid-btn" class="btn btn-info">Registrar administrador</button>
+                <button id="regresid-btn" class="btn btn-info">Registrar residente</button>
             </div>
         </div>
     </div>

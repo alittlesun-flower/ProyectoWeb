@@ -12,7 +12,41 @@ const iniciarEliminacion = async function(){
         Swal.fire("Cancelado", "Cancelado a peticion del usuario","info");
     }
 };
-
+const actualizar = async function(){
+    let idResidente = this.idResidente;
+    let residente = await obtenerPorId(idResidente);
+    let molde = this.parentNode.parentNode;
+    residente.rut = molde.querySelector(".rutRe-txt").value;
+    residente.propietario = molde.querySelector(".propietario-select").value;
+    residente.nombre = molde.querySelector(".nombreRe-txt").value;
+    residente.email = molde.querySelector(".re-email").value;
+    residente.telefono = molde.querySelector(".re-num").value;
+    residente.estacionamiento = molde.querySelector(".estacionamiento-select").value;
+    await actualizarResidente(residente);
+    await Swal.close();
+    let residentes = await getResidentes();
+    cargarTabla(residentes);
+};
+const iniciarActualizacion = async function(){
+    let idResidente = this.idResidente;
+    let residente = await obtenerPorId(idResidente);
+  
+    let molde = document.querySelector(".molde-actualizarRe").cloneNode(true);
+    molde.querySelector(".rutRe-txt").value = residente.rut;
+    molde.querySelector(".propietario-select").value = residente.propietario;
+    molde.querySelector(".nombreRe-txt").value = residente.nombre;
+    molde.querySelector(".re-email").value = residente.email;
+    molde.querySelector(".re-num").value = residente.telefono;
+    molde.querySelector(".estacionamiento-select").value = residente.estacionamiento;
+    molde.querySelector(".actualizarRe-btn").idResidente = idResidente;
+    molde.querySelector(".actualizarRe-btn").addEventListener("click", actualizar);
+    await Swal.fire({
+        title:"Actualizar",
+        html: molde,
+        confirmButtonText: "Cerrar"
+    });
+  
+};
 const cargarTabla = (residente)=>{
     //1. obtener una referencia al cuerpo de la tabla
     let tbody = document.querySelector("#tbody-residente");
@@ -47,6 +81,8 @@ const cargarTabla = (residente)=>{
         let botonActualizar = document.createElement("button");
         botonActualizar.innerText = "Actualizar";
         botonActualizar.classList.add("btn","btn-warning");
+        botonActualizar.idResidente = residente[i].id;
+        botonActualizar.addEventListener("click", iniciarActualizacion);
         tdAccion2.appendChild(botonActualizar);
         //5. agregar los td al tr
         tr.appendChild(tdRut);

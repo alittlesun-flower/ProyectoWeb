@@ -18,6 +18,30 @@
             </tbody>
         </table>
     </div>
+</div>
+<div class="d-none">
+    <div class="row mt-5 molde-actualizarEd">
+            <div class="mb-3">
+                <label for="direccion-txt" class="form-label">Dirección del edificio</label>
+                <input type="text" class="form-control direccion-txt">
+            </div>
+            <div class="mb-3">
+                <label for="cantidadPisos-txt" class="form-label">Cantidad de pisos</label>
+                <input type="number" class="form-control cantidadPisos-txt">
+            </div>
+            <div class="mb-3">
+                <label for="cantidadDepartamentos-txt" class="form-label">Cantidad de departamentos</label>
+                <input type="number" class="form-control cantidadDepartamentos-txt">
+            </div>
+            <div class="mb-3">
+                <label for="letra-txt" class="form-label">Letra del edificio</label>
+                <input type="text" class="form-control letra-txt">
+            </div>
+            <div class="d-grid gap-1">
+                <button  class="btn btn-info actualizarEd-btn">Actualizar</button>
+            </div>
+        </div>
+    </div>
 </div>     
 @endsection
 

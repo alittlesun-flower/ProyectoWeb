@@ -12,7 +12,38 @@ const iniciarEliminacion = async function(){
         Swal.fire("Cancelado", "Cancelado a peticion del usuario","info");
     }
 };
+const actualizar = async function(){
+    let idCondominio = this.idCondominio;
+    let condominio = await obtenerPorId(idCondominio);
+    let molde = this.parentNode.parentNode;
+    condominio.nombre = molde.querySelector(".nomcondominio-txt").value;
+    condominio.direccion = molde.querySelector(".direccioncondominio-txt").value;
+    condominio.comuna = molde.querySelector(".comuna-txt").value;
+    condominio.cantidad = molde.querySelector(".cantidad-num").value;
+    await actualizarCondominio(condominio);
+    await Swal.close();
+    let condominios = await getCondominios();
+    cargarTabla(condominios);
+};
 
+const iniciarActualizacion = async function(){
+    let idCondominio = this.idCondominio;
+    let condominio = await obtenerPorId(idCondominio);
+  
+    let molde = document.querySelector(".molde-actualizarCon").cloneNode(true);
+    molde.querySelector(".nomcondominio-txt").value = condominio.nombre;
+    molde.querySelector(".direccioncondominio-txt").value = condominio.direccion;
+    molde.querySelector(".comuna-txt").value = condominio.comuna;
+    molde.querySelector(".cantidad-num").value = condominio.cantidad;
+    molde.querySelector(".actualizarCon-btn").idCondominio = idCondominio;
+    molde.querySelector(".actualizarCon-btn").addEventListener("click", actualizar);
+    await Swal.fire({
+        title:"Actualizar",
+        html: molde,
+        confirmButtonText: "Cerrar"
+    });
+  
+};
 const cargarTabla = (condominio)=>{
     //1. obtener una referencia al cuerpo de la tabla
     let tbody = document.querySelector("#tbody-condominio");
@@ -42,6 +73,8 @@ const cargarTabla = (condominio)=>{
         let botonActualizar = document.createElement("button");
         botonActualizar.innerText = "Actualizar";
         botonActualizar.classList.add("btn","btn-warning");
+        botonActualizar.idCondominio = condominio[i].id;
+        botonActualizar.addEventListener("click", iniciarActualizacion);
         tdAccion2.appendChild(botonActualizar);
         //5. agregar los td al tr
         tr.appendChild(tdNombre);

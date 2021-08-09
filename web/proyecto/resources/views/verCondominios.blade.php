@@ -18,7 +18,31 @@
             </tbody>
         </table>
     </div>
-</div>    
+</div>
+<div class="d-none">
+    <div class="row mt-5 molde-actualizarCon">
+            <div class="mb-3">
+                <label for="nomcondominio-txt" class="form-label">Nombre del condominio</label>
+                <input type="text" class="form-control nomcondominio-txt">
+            </div>
+            <div class="mb-3">
+                <label for="direccioncondominio-txt" class="form-label">Direccion del condominio</label>
+                <input type="text" class="form-control direccioncondominio-txt">
+            </div>
+            <div class="mb-3">
+                <label for="comuna-txt" class="form-label">Nombre de la comuna donde está ubicada</label>
+                <input type="text" class="form-control comuna-txt">
+            </div>
+            <div class="mb-3">
+                <label for="cantidad-num" class="form-label">Cantidad de edificios</label>
+                <input type="number" class="form-control cantidad-num">
+            </div>  
+            <div class="d-grid gap-1">
+                <button  class="btn btn-info actualizarCon-btn">Actualizar</button>
+            </div>
+        </div>
+    </div>
+</div>     
 @endsection
 
 @section('javascript')

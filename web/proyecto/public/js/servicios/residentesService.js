@@ -23,3 +23,19 @@ const eliminarResidente = async(id)=>{
     }
 
 }
+const obtenerPorId = async (id)=>{
+    let resp = await axios.get(`api/residente/findById?id=${id}`);
+    return resp.data;
+}
+const actualizarResidente = async(residente)=>{
+    try{
+        let resp = await axios.post("api/residente/actualizar", residente, {
+            headers:{
+                "Content-Type": "application/json"
+            }
+        });
+        return resp.data;
+    }catch(e){
+        return false;
+    }
+}

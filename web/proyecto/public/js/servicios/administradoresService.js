@@ -23,3 +23,19 @@ const eliminarAdministrador = async(id)=>{
     }
 
 }
+const obtenerPorId = async (id)=>{
+    let resp = await axios.get(`api/administrador/findById?id=${id}`);
+    return resp.data;
+}
+const actualizarAdministrador = async(administrador)=>{
+    try{
+        let resp = await axios.post("api/administrador/actualizar", administrador, {
+            headers:{
+                "Content-Type": "application/json"
+            }
+        });
+        return resp.data;
+    }catch(e){
+        return false;
+    }
+}

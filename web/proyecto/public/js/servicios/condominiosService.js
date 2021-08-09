@@ -23,3 +23,19 @@ const eliminarCondominio = async(id)=>{
     }
 
 }
+const obtenerPorId = async (id)=>{
+    let resp = await axios.get(`api/condominio/findById?id=${id}`);
+    return resp.data;
+}
+const actualizarCondominio = async(condominio)=>{
+    try{
+        let resp = await axios.post("api/condominio/actualizar", condominio, {
+            headers:{
+                "Content-Type": "application/json"
+            }
+        });
+        return resp.data;
+    }catch(e){
+        return false;
+    }
+}
